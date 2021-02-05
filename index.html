@@ -3,26 +3,32 @@
 <head>
   <title></title>
 
-  <script type="text/javascript" src="vue.js"></script>
-  <script type="text/javascript" src="axios.js"></script>
+  <script type="text/javascript" src="node_modules/vue/dist/vue.js"></script>
+  <script type="text/javascript" src="node_modules/axios/dist/axios.js"></script>
 </head>
 <body>
-  <div id="app">
-    <label v-model="src"></label>
-  </div>
+    <div id="app">
+        <button v-on:click="getData()">Get Data</button>
+        <p>{{text}}</p>
+    </div>
 
   <script type="text/javascript">
     new Vue({
       el: '#app',
       data: {
-          src: ''
+          text: ''
       },
       mounted(){
-        var vm = this
-        axios.get('https://timers-comp-heater.herokuapp.com/api')
-          .then(data => {
-            vm.src = JSON.stringify(data.data)
-          })
+        this.getData()
+      },
+      methods: {
+          getData : function () {
+            var vm = this
+            axios.get('http://localhost:3000/data')
+            .then(data => {
+                vm.text = data.data['data']
+            })
+          }
       }
     })
   </script>

@@ -26,7 +26,7 @@
             var vm = this
             axios.get('https://timers-comp-heater.herokuapp.com/data')
             .then(data => {
-                vm.text = data.data['data']
+                vm.text = data.data.timers
             })
           }
       }

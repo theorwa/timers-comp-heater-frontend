@@ -3,8 +3,8 @@
 <head>
   <title></title>
 
-  <script type="text/javascript" src="node_modules/vue/dist/vue.js"></script>
-  <script type="text/javascript" src="node_modules/axios/dist/axios.js"></script>
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript" src="axios.js"></script>
 </head>
 <body>
     <div id="app">
@@ -24,7 +24,7 @@
       methods: {
           getData : function () {
             var vm = this
-            axios.get('http://localhost:3000/data')
+            axios.get('https://timers-comp-heater.herokuapp.com/data')
             .then(data => {
                 vm.text = data.data['data']
             })
